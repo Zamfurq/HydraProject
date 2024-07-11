@@ -1,0 +1,14 @@
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\bin\Debug\net6.0\Hydra.DataAccess.deps.json
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\bin\Debug\net6.0\Hydra.DataAccess.runtimeconfig.json
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\bin\Debug\net6.0\Hydra.DataAccess.dll
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\bin\Debug\net6.0\Hydra.DataAccess.pdb
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.csproj.AssemblyReference.cache
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.AssemblyInfoInputs.cache
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.AssemblyInfo.cs
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.dll
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\refint\Hydra.DataAccess.dll
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.pdb
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\Hydra.DataAccess.genruntimeconfig.cache
+C:\Users\1904\Documents\BC40\Testing\Hydra Project\SRC\Hydra.DataAccess\obj\Debug\net6.0\ref\Hydra.DataAccess.dll

@@ -1,0 +1,63 @@
+﻿@model CourseViewModel
+
+@{
+    ViewData["Title"] = "Course";
+}
+
+<div class="tables">
+    <div class="candidateList">
+        <div class="cardHeader">
+            <h2>Bootcamp Schedule</h2>
+        </div>
+        <div class="bootcamp-button">
+            <a asp-action="Index" asp-route-id="BootcampClassId" class="btn" id="plannedButton">Schedule</a>
+            <button class="btn" id="activeButton">Add Course</button>
+            <button class="btn" id="completedButton">End Bootcamp</button>
+            <input type="hidden" asp-for="BootcampClassId" id="bootcampId"/>
+        </div>
+        <table class="display" id="courseTables">
+            <thead>
+                <tr>
+                    <td>Course</td>
+                    <td>Trainer</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    let bootcampId = document.querySelector('#bootcampId');
+    $(document).ready(function () {
+        $('#courseTables').DataTable({
+            serverSide: true,
+            processing: true,
+            paging: true,
+            responsive: true,
+            filter: true,
+            pagingType: "full_numbers",
+            ajax: {
+                url: '/Course/CourseList/' + bootcampId.value,
+                type: "POST",
+                contentType: "application/json",
+                data: function (data) {
+                    console.log(data);
+                    return JSON.stringify(data)
+                }
+            },
+            
+            columns: [
+                { data: 'courseName', name: 'skillId', autoWidth: true },
+                { data: 'trainerName', name: 'trainerId', autoWidth: true },
+                { data: 'startDate', name: 'startDate', autoWidth: true },
+                { data: 'endDate', name: 'endDate', autoWidth: true },
+                
+            ]
+
+        })
+    })
+</script>

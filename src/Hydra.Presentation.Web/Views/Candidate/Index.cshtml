@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Candidate List";
+}
+
+<div class="tables">
+    <div class="candidateList">
+        <div class="cardHeader">
+            <h2>Candidate List</h2>
+            <a asp-action="Insert" class="btn add-candidate">Add New</a>
+        </div>
+        <table class="display" id="candidateTables">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Bootcamp Batch</td>
+                    <td>Phone Number</td>
+                    <td>Domicile</td>
+                </tr>
+            </thead>
+            <tbody>
+                
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#candidateTables').DataTable({
+            serverSide: true,
+            processing: true,
+            paging:true,
+            responsive: true,
+            filter: true,
+            pagingType:"full_numbers",
+            ajax: {
+                url: "/Candidate/CandidateList",
+                type: "POST",
+                contentType: "application/json",
+                data: function (data) {
+                    console.log(data);
+                    return JSON.stringify(data)
+                }
+            },
+            columnDefs: [{
+                targets: [2],
+                searchable: false,
+                orderable: false
+            },
+            {
+                targets: [4],
+                searchable: false,
+                orderable: false,
+            }
+            ],
+            columns: [
+                {render: function(data, type, row) { return row.firstName + " " + row.lastName;}, name: 'firstName', autoWidth: true},
+                { data: 'bootcampClassId', name: 'bootcampClassId', autoWidth: true },
+                { data: 'phoneNumber', name: 'phoneNumber', autoWidth: true },
+                { data: 'domicile', name: 'domicile', autoWidth: true },
+                {
+                    data: null, visible: role.textContent !== "Trainer" ? true: false, render: function (data, type, row) {
+                        var myUrl = '@Url.Action("Update","Candidate")/' + row.id;
+                        return '<a href="' + myUrl + '" class="btn">Edit</a>'
+                    }
+                } 
+            ]
+
+        })
+    })
+</script>

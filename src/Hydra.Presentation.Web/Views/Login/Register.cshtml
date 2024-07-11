@@ -1,0 +1,33 @@
+﻿@model UserRegisterViewModel
+
+@{
+    Layout = "_AccountLayout";
+}
+
+<form method="post" asp-action="Register">
+    <h2>Register to Hydra Bootcamp System</h2>
+    <div class="input-box">
+        <input type="text" asp-for="Username" placeholder="Username"  required />
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-box">
+        <input type="email" asp-for="Email" placeholder="Email" required />
+        <i class='bx bx-envelope'></i>
+    </div>
+    <div class="input-box">
+        <input type="password" asp-for="Password" placeholder="Password" required />
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+    <div class="input-box">
+        <input type="password" asp-for="ConfirmPassword" placeholder="Confirm Password" required />
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+    <div class="input-box" >
+        <select name="role" placeholder="Select Role" asp-items="Model.Roles" asp-for="Role"  required>
+            <option value="">Select Role</option>
+        </select>
+    </div>
+    <button type="submit" class="btn">Register</button>
+
+
+</form>

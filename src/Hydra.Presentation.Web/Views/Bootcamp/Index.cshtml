@@ -1,0 +1,106 @@
+﻿@{
+    ViewData["Title"] = "Bootcamp List";
+}
+
+<div class="tables">
+    <div class="candidateList">
+        <div class="cardHeader">
+            <h2>Bootcamp List</h2>
+            <a asp-action="Insert" class="btn add-bootcamp">Add New</a>
+        </div>
+        <div class="bootcamp-button">
+            <button class="btn" id="plannedButton">Planned</button>
+            <button class="btn" id="activeButton">Active</button>
+            <button class="btn" id="completedButton">Completed</button>
+        </div>
+        <table class="display" id="bootcampTables">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Description</td>
+                    <td>Start Date</td>
+                    <td>End Date</td>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    role = document.querySelector('.role');
+    if (role.textContent === "Trainer") {
+        getBootcamp("/Bootcamp/BootcampList/Planned")
+        $('#plannedButton').click(function () {
+            $('#bootcampTables').DataTable().clear();
+            $('#bootcampTables').DataTable().destroy();
+            getBootcamp("/Bootcamp/BootcampList/Planned")
+        });
+        $('#activeButton').click(function () {
+            $('#bootcampTables').DataTable().clear();
+            $('#bootcampTables').DataTable().destroy();
+            getBootcamp("/Bootcamp/BootcampList/Active")
+        });
+        $('#completedButton').click(function () {
+            $('#bootcampTables').DataTable().clear();
+            $('#bootcampTables').DataTable().destroy();
+            getBootcamp("/Bootcamp/BootcampList/Completed")
+        });
+    } else {
+        getBootcamp('/Bootcamp/BootcampList/full')
+    }
+
+    function getBootcamp(url) {
+        $(document).ready(function () {
+            $('#bootcampTables').DataTable({
+                serverSide: true,
+                processing: true,
+                pageLength: 10,
+                "paging": true,
+                "pagingType": "full_numbers",
+                ajax: {
+                    url: url,
+                    type: "POST",
+                    contentType: "application/json",
+                    data: function (data) {
+                        console.log(data);
+                        return JSON.stringify(data)
+                    }
+                },
+                columnDefs: [{
+                    targets: [4],
+                    searchable: false,
+                    orderable: false
+                }],
+                columns: [
+                    { data: 'id', name: 'id', autoWidth: true },
+                    { data: 'description', name: 'description', autoWidth: true },
+                    { data: 'startDate', name: 'startDate', autoWidth: true },
+                    { data: 'endDate', name: 'endDate', autoWidth: true },
+                    {
+                        data: null, visible: role.textContent !== "Trainer" ? true : false, render: function (data, type, row) {
+                            var myUrl = '@Url.Action("Update","Bootcamp")/' + row.id;
+                            return '<a href="' + myUrl + '" class="btn">Edit</a>'
+                        }
+                    },
+                    {
+                        data: null, visible: role.textContent === "Trainer" && url !== "/Bootcamp/BootcampList/Completed" ? true : false, render: function (data, type, row) {
+                            if (url == "/Bootcamp/BootcampList/Active"){
+                                var myUrl = '/Course/' + row.id;
+                                return '<a href="' + myUrl + '" class="btn">Details</a>'
+                            } else if (url == "/Bootcamp/BootcampList/Planned") {
+                                return '<a href="#" class="btn">Enroll</a><a href="#" class="btn">Cancel</a>'
+                            } else {
+                                return '';
+                            }
+                            
+                        }
+                    }
+                ]
+            })
+        })
+    }
+
+</script>
+

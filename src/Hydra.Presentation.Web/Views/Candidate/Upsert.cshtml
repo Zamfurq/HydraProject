@@ -1,0 +1,94 @@
+﻿@model CandidateViewModel
+
+@{
+    @if (Model == null || Model.Id == 0)
+    {
+        ViewData["Title"] = "Add Candidate";
+    } else
+    {
+        ViewData["Title"] = "Update Candidate";
+    }
+
+}
+
+<div class="tables">
+    <div class="candidateList">
+        <div class="cardHeader">
+            <h2>Add Candidate</h2>
+        </div>
+        <form method="post">
+            @if (Model != null)
+            {
+                <input type="hidden" asp-for="Id" />
+            }
+            <table class="display">
+                <tr>
+                    <th>Bootcamp</th>
+                    <td>
+                        <select asp-items="Model.BootcampList" asp-for="BootcampClassId">
+                            <option value="">Select Bootcamp</option>
+                        </select>
+                        <span asp-validation-for="BootcampClassId"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>First Name</th>
+                    <td>
+                        <input type="text" asp-for="FirstName" placeholder="First Name" required />
+                        <span asp-validation-for="FirstName"></span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Last Name</th>
+                    <td><input type="text" asp-for="LastName" placeholder="Last Name" required />
+                        <span asp-validation-for="LastName"></span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <select asp-for="Gender">
+                            <option value="">Select Gender</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                        <span asp-validation-for="Gender"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Birth Date</th>
+                    <td><input type="date" asp-for="BirthDate" placeholder="Birth Date" required />
+                        <span asp-validation-for="BirthDate"></span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Address</th>
+                    <td><textarea asp-for="Address" placeholder="Address" required></textarea>
+                        <span asp-validation-for="Address"></span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Domicile</th>
+                    <td><input type="text" asp-for="Domicile" placeholder="Domicile" required />
+                        <span asp-validation-for="Domicile"></span>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <th>Phone Number</th>
+                    <td><input type="tel" asp-for="PhoneNumber" placeholder="Phone Number" required />
+                        <span asp-validation-for="PhoneNumber"></span>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td><button type="submit" class="btn">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>

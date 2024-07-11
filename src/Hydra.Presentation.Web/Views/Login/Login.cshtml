@@ -1,0 +1,24 @@
+﻿@model UserLoginViewModel
+
+@{
+    Layout = "_AccountLayout";
+}
+
+<form method="post" asp-action="Login">
+    <h1>Welcome to Hydra Bootcamp</h1>
+    <h2>Login</h2>
+    <div class="input-box">
+        <input type="text" placeholder="Username" asp-for="Username" required />
+        <i class='bx bxs-user'></i>
+    </div>
+    <div class="input-box">
+        <input type="password" placeholder="Password" asp-for="Password" required />
+        <i class='bx bxs-lock-alt'></i>
+    </div>
+
+    <button type="submit" class="btn">Login</button>
+
+    <div class="register-link">
+        <p>Don't have an account? <a asp-action="Register">Register Now</a></p>
+    </div>
+</form>
